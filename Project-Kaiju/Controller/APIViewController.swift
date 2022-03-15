@@ -71,9 +71,6 @@ class APIViewController: UIViewController,UITextFieldDelegate,UIImagePickerContr
         searchTextField.resignFirstResponder()
     }
     
-    
-    
-    
     //検索キーワードの値をもとに、画像を引っ張ってくる
     //今回は、pixabay.comから引っ張る
     func getImages(keyword:String){
