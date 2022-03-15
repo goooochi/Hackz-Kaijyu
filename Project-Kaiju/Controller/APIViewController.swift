@@ -58,6 +58,8 @@ class APIViewController: UIViewController,UITextFieldDelegate,UIImagePickerContr
                 
                 
                 commentTextView.delegate = self
+        
+        commentTextView.layer.cornerRadius = 25.0
                 
 
     }

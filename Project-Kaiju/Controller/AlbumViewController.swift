@@ -24,7 +24,7 @@ class AlbumViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCo
 
         // Do any additional setup after loading the view.
         
-        commentString.layer.cornerRadius = 20.0
+        commentString.layer.cornerRadius = 25.0
                 
                 PHPhotoLibrary.requestAuthorization{(status) in
                     
@@ -70,8 +70,6 @@ class AlbumViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCo
         cameraPicker.allowsEditing = true
         
         self.present(cameraPicker, animated: true, completion: nil)
-        
-        
         
     }
     

@@ -21,7 +21,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate & 
         // Do any additional setup after loading the view.
         
         
-        commentString.layer.cornerRadius = 20.0
+        commentString.layer.cornerRadius = 25.0
                 
                 PHPhotoLibrary.requestAuthorization{(status) in
                     
@@ -37,6 +37,8 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate & 
                     }
         
     }
+        
+        
 }
     
     

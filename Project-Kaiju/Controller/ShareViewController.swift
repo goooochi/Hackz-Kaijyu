@@ -11,7 +11,6 @@ class ShareViewController: UIViewController {
     
     var resultImage = UIImage()
     var commentString = String()
-    
     var screenShotImage = UIImage()
     
     
@@ -21,6 +20,12 @@ class ShareViewController: UIViewController {
     @IBOutlet weak var commentLabel: UILabel!
     
 
+    @IBOutlet weak var Share: UIButton!
+    
+    @IBOutlet weak var back: UIButton!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,8 +36,9 @@ class ShareViewController: UIViewController {
         
         //commentLabelにフォントサイズが入るようにする
         commentLabel.adjustsFontSizeToFitWidth = true
-        
-        
+        Share.layer.cornerRadius = 20.0
+        back.layer.cornerRadius = 20.0
+
         
     }
     
@@ -40,14 +46,12 @@ class ShareViewController: UIViewController {
    
     @IBAction func share(_ sender: Any) {
         
-        
         //スクリーンショットを撮る
         takeScreenShot()
         
         //アクティビティービューに載っけて、シェアする
         let items = [screenShotImage] as [Any]
  
-        
         let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
         
         present(activityVC, animated: true, completion: nil)
