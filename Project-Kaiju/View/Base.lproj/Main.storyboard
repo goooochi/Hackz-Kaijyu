@@ -86,7 +86,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noImage" translatesAutoresizingMaskIntoConstraints="NO" id="54p-vp-xmf">
                                 <rect key="frame" x="54" y="102" width="306" height="306"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.51132626950000004" green="0.71020730850000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.59215688710000003" green="0.87843137979999997" blue="0.98823523520000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="一言" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PpE-aQ-h4t">
                                 <rect key="frame" x="53" y="566" width="35" height="21"/>
@@ -124,7 +124,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="next:" destination="uDA-bc-yYF" eventType="touchUpInside" id="gKC-Ie-yOX"/>
+                                    <action selector="next:" destination="uDA-bc-yYF" eventType="touchUpInside" id="bra-xK-XNy"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -179,7 +179,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="戻る"/>
                                 <connections>
-                                    <action selector="back:" destination="VHx-Rj-xqw" eventType="touchUpInside" id="d0V-LS-R4Q"/>
+                                    <action selector="back:" destination="VHx-Rj-xqw" eventType="touchUpInside" id="9vV-MO-9eu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMk-mx-g5A">
@@ -357,7 +357,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="egF-2s-EC8"/>
+        <segue reference="BKY-Xs-JOJ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="noImage" width="128" height="128"/>

@@ -14,22 +14,31 @@ class ShareViewController: UIViewController {
     var screenShotImage = UIImage()
     
     
+    let shareText = "シェアするよ"
+    let shareUrl = NSURL(string: "https://www.apple.com/jp/")!
+    
+    
+    
+    
     @IBOutlet weak var resultImageView: UIImageView!
     
     
     @IBOutlet weak var commentLabel: UILabel!
     
-
+    
     @IBOutlet weak var Share: UIButton!
     
     @IBOutlet weak var back: UIButton!
     
     
+    @IBOutlet weak var settingButton: UIButton!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
+        
+        
         
         resultImageView.image = resultImage
         commentLabel.text = commentString
@@ -38,30 +47,29 @@ class ShareViewController: UIViewController {
         commentLabel.adjustsFontSizeToFitWidth = true
         Share.layer.cornerRadius = 20.0
         back.layer.cornerRadius = 20.0
-
+        
+        
+        
         
     }
     
-
-   
+    
+    
     @IBAction func share(_ sender: Any) {
         
         //スクリーンショットを撮る
         takeScreenShot()
         
-        //アクティビティービューに載っけて、シェアする
-        let items = [screenShotImage] as [Any]
- 
-        let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        shareOnTwitter()
         
-        present(activityVC, animated: true, completion: nil)
+  
+        
         
     }
     
-    
     //スクリーンショットを自動で撮る
     func takeScreenShot(){
-       
+        
         //撮る幅と高さを決める
         let width = CGFloat(UIScreen.main.bounds.size.width)
         
@@ -83,11 +91,29 @@ class ShareViewController: UIViewController {
         
     }
     
+    func shareOnTwitter() {
+        
+        //シェアするテキストを作成
+        let text = "AppからTwitterでシェアする"
+        let hashTag = "#ハッシュタグ"
+        let completedText = text + "\n" + hashTag
+        
+        //作成したテキストをエンコード
+        let encodedText = completedText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        
+        //エンコードしたテキストをURLに繋げ、URLを開いてツイート画面を表示させる
+        if let encodedText = encodedText,
+           let url = URL(string: "https://twitter.com/intent/tweet?text=\(encodedText)") {
+            UIApplication.shared.open(url)
+        }
+    }
+    
+    
     @IBAction func back(_ sender: Any) {
+        
+        
         dismiss(animated: true, completion: nil)
     }
     
     
-    
-
 }
