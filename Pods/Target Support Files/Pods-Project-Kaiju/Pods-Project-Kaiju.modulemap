@@ -1,0 +1,6 @@
+framework module Pods_Project_Kaiju {
+  umbrella header "Pods-Project-Kaiju-umbrella.h"
+
+  export *
+  module * { export * }
+}
