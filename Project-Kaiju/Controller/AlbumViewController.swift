@@ -44,7 +44,7 @@ class AlbumViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCo
         //インスタンスを作成
         let cameraPicker = UIImagePickerController()
         
-        cameraPicker.sourceType = sourseType
+        cameraPicker.sourceType = sourceType
         
         //cameraPickerに使えるデリゲートメソッドをViewControllerでも使えるようにする
         //他のクラスから自分のクラスへ委任を受ける
