@@ -38,8 +38,7 @@ class AlbumViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCo
     }
     
     
-    func createImagePicker(sourseType:UIImagePickerController.SourceType){
-        
+    func createImagePicker(sourceType:UIImagePickerController.SourceType){
         
         
         //インスタンスを作成

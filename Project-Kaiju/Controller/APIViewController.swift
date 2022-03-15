@@ -164,35 +164,6 @@ class APIViewController: UIViewController,UITextFieldDelegate,UIImagePickerContr
         }
     }
     
-    //アルバムから選択を押す
-    @IBAction func selectAlbum(_ sender: Any) {
-        
-        //UIImagePickerController.SourceTypeという型
-        let sourceType:UIImagePickerController.SourceType = .photoLibrary
-        //メソッドcreateImagePickerが呼ばれるx
-        createImagePicker(sourceType: sourceType)
-        
-        
-        
-    }
-    
-    
-    //カメラを選択
-    @IBAction func camera(_ sender: Any) {
-        
-        //UIImagePickerController.SourceTypeという型
-        let sourceType:UIImagePickerController.SourceType = .camera
-        //メソッドcreateImagePickerが呼ばれる
-        createImagePicker(sourseType: sourceType)
-        
-        
-    }
-    
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        return commentTextView.text.count + (text.count - range.length) <= 55
-    }
-    
     
     
     
