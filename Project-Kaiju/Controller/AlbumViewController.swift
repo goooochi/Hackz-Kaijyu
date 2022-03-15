@@ -63,10 +63,10 @@ class AlbumViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCo
         return linesAfterChange <= 1 && commentString.text.count - 1 <= textLength
     }
     
-//    func textViewDidChange(_ textView: UITextView) {
-//        _ = textView.text.components(separatedBy: .newlines)
-//        
-//    }
+    //    func textViewDidChange(_ textView: UITextView) {
+    //        _ = textView.text.components(separatedBy: .newlines)
+    //
+    //    }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.text == placeholder {
@@ -111,6 +111,21 @@ class AlbumViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCo
         
         self.present(cameraPicker, animated: true, completion: nil)
         
+    }
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        //選択された五臓のイメージがinfo[.editedImage] as? UIImageとなる
+        if let pickerImage = info[.editedImage] as? UIImage{
+            
+            imageView.image = pickerImage
+            
+            //閉じる処理
+            picker.dismiss(animated: true, completion: nil)
+            
+            
+        }
     }
     
     
