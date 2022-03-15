@@ -357,9 +357,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-
         <segue reference="JRW-eH-Qqk"/>
-
     </inferredMetricsTieBreakers>
     <resources>
         <image name="noImage" width="128" height="128"/>
