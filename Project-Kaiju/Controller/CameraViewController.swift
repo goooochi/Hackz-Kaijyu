@@ -8,38 +8,72 @@
 import UIKit
 import Photos
 
-class CameraViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate{
+class CameraViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate,UITextViewDelegate{
     
     @IBOutlet weak var imageView: UIImageView!
     
-    @IBOutlet weak var commentString: UITextView!
+    @IBOutlet weak var commentTextView: UITextView!
     
-
+    private let placeholder = " 5文字だけ"
+    private let textLength = 4
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
         
-        commentString.layer.cornerRadius = 25.0
+        commentTextView.layer.cornerRadius = 25.0
+        commentTextView.delegate = self
+        commentTextView.text = placeholder
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
+        let swipeDownGesture = UISwipeGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        swipeDownGesture.direction = .down
+        self.view.addGestureRecognizer(swipeDownGesture)
+        
+        PHPhotoLibrary.requestAuthorization{(status) in
+            
+            switch(status){
                 
-                PHPhotoLibrary.requestAuthorization{(status) in
-                    
-                    switch(status){
-                        
-                    case .authorized:break
-                    case .notDetermined:break
-                    case .restricted:break
-                    case .denied:break
-                    case .limited:break
-                    @unknown default: break
-                        
-                    }
+            case .authorized:break
+            case .notDetermined:break
+            case .restricted:break
+            case .denied:break
+            case .limited:break
+            @unknown default: break
+                
+            }
+            
+        }
+        
         
     }
-        
-        
-}
+    @objc func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let existingLines = textView.text.components(separatedBy: .newlines)
+        let newLines = text.components(separatedBy: .newlines)
+        let linesAfterChange = existingLines.count + newLines.count - 1
+        return linesAfterChange <= 1 && commentTextView.text.count - 1 <= textLength
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView){
+        if textView.text == placeholder{
+            textView.text = nil
+            textView.textColor = .darkText
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView){
+        if textView.text.isEmpty{
+            textView.text = placeholder
+            textView.textColor = .darkGray
+        }
+    }
     
     
     
@@ -77,7 +111,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate & 
     }
     
     
-
+    
     
     @IBAction func next(_ sender: Any) {
         
@@ -89,7 +123,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate & 
         
         let shareVC = segue.destination as! ShareViewController
         
-        shareVC.commentString = commentString.text
+        shareVC.commentString = commentTextView.text
         
         shareVC.resultImage = imageView.image!
         
@@ -97,5 +131,5 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate & 
     
     
     
-
+    
 }

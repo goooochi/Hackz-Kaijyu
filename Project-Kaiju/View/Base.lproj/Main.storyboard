@@ -266,7 +266,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="8EF-S0-td8"/>
                     <connections>
-                        <outlet property="commentString" destination="t24-dn-AJH" id="D8N-BE-h8J"/>
+                        <outlet property="commentTextView" destination="t24-dn-AJH" id="28y-VI-l8h"/>
                         <outlet property="imageView" destination="tUH-hy-fcN" id="0FV-dl-fP3"/>
                         <segue destination="VHx-Rj-xqw" kind="show" identifier="next" id="egF-2s-EC8"/>
                     </connections>
@@ -357,7 +357,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JRW-eH-Qqk"/>
+        <segue reference="egF-2s-EC8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="noImage" width="128" height="128"/>
