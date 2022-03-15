@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 
 class CameraViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate{
     
@@ -20,7 +21,23 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate & 
         // Do any additional setup after loading the view.
         
         
+        commentString.layer.cornerRadius = 20.0
+                
+                PHPhotoLibrary.requestAuthorization{(status) in
+                    
+                    switch(status){
+                        
+                    case .authorized:break
+                    case .notDetermined:break
+                    case .restricted:break
+                    case .denied:break
+                    case .limited:break
+                    @unknown default: break
+                        
+                    }
+        
     }
+}
     
     
     

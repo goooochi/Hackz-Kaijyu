@@ -23,6 +23,23 @@ class AlbumViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCo
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        commentString.layer.cornerRadius = 20.0
+                
+                PHPhotoLibrary.requestAuthorization{(status) in
+                    
+                    switch(status){
+                        
+                    case .authorized:break
+                    case .notDetermined:break
+                    case .restricted:break
+                    case .denied:break
+                    case .limited:break
+                    @unknown default: break
+                        
+                    }
+                    
+    }
     }
     
 
@@ -77,5 +94,7 @@ class AlbumViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCo
         
     }
     
-}
+
+
     
+}
