@@ -16,32 +16,70 @@ class AlbumViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCo
     
     @IBOutlet weak var commentString: UITextView!
     
-    
-    
+    private let placeholder = "5文字だけ"
+    private let textLenght = 5
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
+        //AlbumViewControllerの中の、viewdidloadの中
+
         commentString.layer.cornerRadius = 25.0
-                
-                PHPhotoLibrary.requestAuthorization{(status) in
-                    
-                    switch(status){
                         
-                    case .authorized:break
-                    case .notDetermined:break
-                    case .restricted:break
-                    case .denied:break
-                    case .limited:break
-                    @unknown default: break
-                        
-                    }
-                    
-    }
+                        PHPhotoLibrary.requestAuthorization{(status) in
+                            
+                            switch(status){
+                                
+                            case .authorized:break
+                            case .notDetermined:break
+                            case .restricted:break
+                            case .denied:break
+                            case .limited:break
+                            @unknown default: break
+                                
+                            }
+                            
+            }
+        
+        commentString.delegate = self
+                commentString.text = placeholder
+                let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+                self.view.addGestureRecognizer(tapGesture)
+            }
+
+    @objc func dismissKeyboard(){
+            self.view.endEditing(true)
+        }
+        
+        private func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replecementText text: String) ->  Bool{
+            let existingLines = textView.text.components(separatedBy: .newlines)
+            let newLines = text.components(separatedBy: .newlines)
+            let linesAfterChange = existingLines.count + newLines.count - 1
+            
+            return linesAfterChange<=1 && commentString.text.count + (text.count - range.length)<=textLenght
+        }
+        
+        func textViewDidChange(_ textView: UITextView) {
+            _ = textView.text.components(separatedBy: .newlines)
+
+        }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.text == placeholder {
+            textView.text = nil
+            textView.textColor = .darkText
+            
+        }
     }
     
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty{
+            textView.text = placeholder
+            textView.textColor = .darkGray
+        }
+    }
 
     
     @IBAction func selectAlbum(_ sender: Any) {
