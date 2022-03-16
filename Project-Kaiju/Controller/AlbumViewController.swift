@@ -93,6 +93,20 @@ class AlbumViewController: UIViewController ,UITextFieldDelegate,UIImagePickerCo
         
         
     }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            
+            
+            if let pickerImage = info[.editedImage] as? UIImage{
+                
+                imageView.image = pickerImage
+                
+                //閉じる処理
+                picker.dismiss(animated: true, completion: nil)
+                
+                
+            }
+            
+        }
     
     
     func createImagePicker(sourceType:UIImagePickerController.SourceType){
